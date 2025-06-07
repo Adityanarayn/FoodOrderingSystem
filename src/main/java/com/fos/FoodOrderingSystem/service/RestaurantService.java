@@ -1,6 +1,6 @@
 package com.fos.FoodOrderingSystem.service;
 
-import com.fos.FoodOrderingSystem.model.MenuItem;
+
 import com.fos.FoodOrderingSystem.model.Restaurant;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +27,8 @@ public class RestaurantService {
         restaurant.updateMenuItemPrice(itemName, newPrice);
 
     }
-//    public MenuItem getAllItemsInMenuInRestaurant(String name){
-//        Restaurant restaurant = getRestaurant(restaurantMap.get(name));
-//    }
 
-    private Restaurant getRestaurant(String restaurantName) {
+    public Restaurant getRestaurant(String restaurantName) {
         Restaurant r = restaurantMap.get(restaurantName.toLowerCase());
         if (r == null) throw new NoSuchElementException("Restaurant Not Found!!");
         return r;
