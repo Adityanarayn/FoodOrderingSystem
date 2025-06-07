@@ -23,8 +23,10 @@ public class RestaurantService {
     }
 
     public void updateMenuItem(String restaurantName, String itemName, int newPrice){
-        Restaurant restaurant = getRestaurant(restaurantName);
+        Restaurant restaurant = getRestaurant(restaurantName.toLowerCase());
         restaurant.updateMenuItemPrice(itemName, newPrice);
+
+
 
     }
 

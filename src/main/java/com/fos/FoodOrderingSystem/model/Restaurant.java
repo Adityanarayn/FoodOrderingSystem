@@ -3,10 +3,7 @@ package com.fos.FoodOrderingSystem.model;
 
 import lombok.Data;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Data
 public class Restaurant {
@@ -38,7 +35,9 @@ public class Restaurant {
     }
 
     public void updateMenuItemPrice(String name, int price){
-        if(menu.containsKey(name)){
+        if(!menu.containsKey(name)){
+            throw new NoSuchElementException("Menu item "+name+" Not Found !!");
+        }else{
             menu.get(name).setPrice(price);
         }
     }
