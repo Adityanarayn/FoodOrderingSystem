@@ -11,10 +11,15 @@ public class RestaurantService {
     private final Map<String, Restaurant> restaurantMap = new HashMap<>();
 
     public void onboardRestaurant(Restaurant restaurant){
-        if (restaurantMap.containsKey(restaurant.getName().toLowerCase())){
+        String name = restaurant.getName();
+        if(name == null || name.isBlank()){
+            throw new IllegalArgumentException("Restaurant name cannot be null or empty");
+        }
+        String restaurantNameInLowerCase = name.toLowerCase();
+        if (restaurantMap.containsKey(restaurantNameInLowerCase)){
             throw new IllegalArgumentException("Restaurant already exists");
         }
-        restaurantMap.put(restaurant.getName().toLowerCase(), restaurant);
+        restaurantMap.put(restaurant.getName(), restaurant);
     }
 
     public void addMenuItem( String restaurantName, String itemName, int price ){

@@ -1,15 +1,28 @@
 package com.fos.FoodOrderingSystem.model;
 
 
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import java.util.*;
 
 @Data
 public class Restaurant {
-    private final String name;
-    private final double rating;
-    private final int maxOrders;
+    @NotBlank(message = "Restaurant name is required")
+    private String name;
+
+    @DecimalMin(value = "0.0", inclusive = false, message = "Rating must be positive")
+    @DecimalMax(value = "5.0", message = "Rating cannot be more than 5")
+    private double rating;
+
+    @Min(value = 1, message = "Max orders must be at least 1")
+    private int maxOrders;
+//    private final String name;
+//    private final double rating;
+//    private final int maxOrders;
     private final Map<String, MenuItem> menu = new HashMap<>();
     private final Set<Integer> activeOrderIds = new HashSet<>();
 

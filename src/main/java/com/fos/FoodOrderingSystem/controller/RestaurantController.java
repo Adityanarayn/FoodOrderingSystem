@@ -3,7 +3,9 @@ package com.fos.FoodOrderingSystem.controller;
 
 import com.fos.FoodOrderingSystem.model.Restaurant;
 import com.fos.FoodOrderingSystem.service.RestaurantService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,9 +18,9 @@ public class RestaurantController {
     private RestaurantService restaurantService;
 
     @PostMapping
-    public String onBoardRestaurant(@RequestBody Restaurant restaurant){
+    public ResponseEntity<String> onBoardRestaurant(@Valid @RequestBody Restaurant restaurant){
         restaurantService.onboardRestaurant(restaurant);
-        return "Restaurant Onboarded: "+ restaurant.getName();
+        return ResponseEntity.ok("Restaurant Onboarded: "+ restaurant.getName());
     }
 
     @PutMapping("/{name}/menu/add")
