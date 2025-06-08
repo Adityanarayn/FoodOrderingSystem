@@ -19,12 +19,12 @@ public class RestaurantService {
 
     public void addMenuItem( String restaurantName, String itemName, int price ){
         Restaurant restaurant = getRestaurant(restaurantName);
-        restaurant.addMenuItem(itemName, price);
+        restaurant.addMenuItem(itemName.toLowerCase(), price);
     }
 
     public void updateMenuItem(String restaurantName, String itemName, int newPrice){
         Restaurant restaurant = getRestaurant(restaurantName.toLowerCase());
-        restaurant.updateMenuItemPrice(itemName, newPrice);
+        restaurant.updateMenuItemPrice(itemName.toLowerCase(), newPrice);
 
 
 

@@ -37,9 +37,9 @@ public class Restaurant {
     public void updateMenuItemPrice(String name, int price){
         if(!menu.containsKey(name)){
             throw new NoSuchElementException("Menu item "+name+" Not Found !!");
-        }else{
-            menu.get(name).setPrice(price);
         }
+        menu.get(name).setPrice(price);
+
     }
 
     public String getName() {
