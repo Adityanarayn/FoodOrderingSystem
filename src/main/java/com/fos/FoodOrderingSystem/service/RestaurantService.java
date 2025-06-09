@@ -19,7 +19,7 @@ public class RestaurantService {
         if (restaurantMap.containsKey(restaurantNameInLowerCase)){
             throw new IllegalArgumentException("Restaurant already exists");
         }
-        restaurantMap.put(restaurant.getName(), restaurant);
+        restaurantMap.put(restaurantNameInLowerCase, restaurant);
     }
 
     public void addMenuItem( String restaurantName, String itemName, int price ){
